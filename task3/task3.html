@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ 
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  
+  <title>Select table (cool d3 stuff)</title>
+ 
+</head>
+
+<body>
+  <h1>Select CSV file to display</h1>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs">
+        <select class="form-select" id="csvSelect"></select>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm">
+        <table id="dataTable" class="table"></table>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
+</body>
+
+<script>
+  var table = d3.select('#dataTable');
+  var thead = table.append("thead");
+  var tbody = table.append("tbody");
+
+  columns = null;
+
+  options = ["data1.csv", "data2.csv"]
+  object = '#csvSelect'
+
+  function genSelector(optn, obj) {
+    let select = d3.select(obj)
+      .on('change', loadTable);
+
+    let options = select
+      .selectAll('option')
+      .data(optn).enter()
+      .append('option')
+      .text((d) => d);
+  }
+
+  function loadTable() {
+    selectValue = d3.select('#csvSelect').property('value')
+    d3.csv(`../${selectValue}`).then(async (data) => {
+      thead.selectAll("th").remove()
+      formatHeader(data.columns);
+      updateTable(data);
+    })
+  }
+
+  // running functions
+  genSelector(options, object)
+  loadTable()
+
+  function formatHeader(c) {
+    columns = c;
+    thead.append("tr")
+      .selectAll("th")
+      .data(c)
+      .enter()
+      .append("th")
+      .text(d => d)
+  }
+
+  function updateTable(data) {
+    tbody.text("")
+    trSelection = tbody.selectAll('tr').data(data)
+    trSelection.enter()
+      .append("tr")
+      .selectAll("td")
+      .data(d => columns.map(c => d[c]))
+      .enter()
+      .append("td").text(x => x)
+  }
+
+</script>
+
+</html

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+       <title>Task2</title> 
+    <h1>Task2</h1>
+    <style>
+        button{
+            font-size:larger;
+        }
+        body{
+        background-color:rgb(39, 173, 39);
+        }
+        
+        
+        
+        </style>
+
+<h2>Write the text in the input below</h2>
+
+</head>
+
+<body>
+
+
+    
+    
+
+    
+
+<input type="text" id="texto" placeholder="Write text here"></input>
+
+<button id="boton" onclick="InText()">Submit</button>
+<button id="blue button" onclick="allblue()" >Blue</button>
+
+<button id="red button" onclick="allred()" >Red</button>
+
+<script>
+function InText(){
+let texto2=d3.select('#texto').property("value");
+console.log(texto2)
+d3.select("body")
+.append('p')
+.text(texto2)
+.style('color', 'white')
+} 
+function allblue() {
+d3.selectAll('p')
+.style('color', 'blue')
+} 
+function allred() {
+d3.selectAll('p')
+.style('color', 'red')
+} 
+
+
+
+</script>
+
+
+
+</body>
+</html>
