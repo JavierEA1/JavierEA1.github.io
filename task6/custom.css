@@ -1,0 +1,39 @@
+.exclaim .reveal .state-background {
+  background: lightgreen;
+} 
+
+.exclaim .reveal div {
+  color: white;
+    font-size:60px;
+
+  font-family: 'Lacquer';
+}
+
+.exclaim .reveal code {
+  color: blue;
+}
+
+.movidas .reveal .state-background {
+  background: lightblue;
+} 
+
+.movidas .reveal div {
+  color: white;
+  font-family: 'Lacquer';
+}
+
+.movidas .reveal code {
+  color: red;
+}
+.historias .reveal .state-background {
+  background: lightsalmon ;
+} 
+
+.historias .reveal div {
+  color: white;
+  font-family: 'Lacquer';
+}
+
+.historias .reveal code {
+  color: red;
+}

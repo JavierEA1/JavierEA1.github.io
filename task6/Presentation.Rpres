@@ -1,0 +1,126 @@
+Presentation
+========================================================
+author: Javier Esteban
+date: 
+autosize: true
+css:custom.css
+Incremental: true
+transition: fade
+transition-speed: slow
+
+In this presentation I will work with the data set AccordPrice
+
+```{r, include= FALSE}
+library(Stat2Data)
+library(plotly)
+data(AccordPrice)
+Data=AccordPrice
+
+```
+```{r}
+head(Data)
+```
+
+Summary Data
+========================================================
+type:exclaim
+
+
+1. Response:Price
+
+2. Variable 1: Mileage
+
+3. Variable 2: Age 
+
+Summary
+========================================================
+type: movidas
+```{r}
+summary(Data)
+```
+
+Plot of Mileage/price
+========================================================
+type: movidas
+
+```{r, echo=FALSE}
+p <-  plot_ly(Data, x=~Mileage, y=~Price, name="cuadratic", type="scatter")
+  
+
+htmlwidgets::saveWidget(p,'plotly.html')
+```
+
+<style>
+  .p_iframe iframe {
+    width:100%;
+    height:576px;
+}
+</style>
+
+<div class="p_iframe">
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly.html"></iframe>
+</div>
+
+Plot of Age/price
+========================================================
+type: movidas
+```{r, echo=FALSE}
+c <-  plot_ly(Data, x=~Age, y=~Price, name="cuadratic", type="scatter")
+  
+
+htmlwidgets::saveWidget(c,'plot2.html')
+```
+<style>
+  .c_iframe iframe {
+    width:100%;
+    height:576px;
+}
+</style>
+
+<div class="c_iframe">
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plot2.html"></iframe>
+</div>
+
+Density plot Mileage
+========================================================
+type: historias
+```{r, echo=FALSE}
+density <- density(Data$Mileage)
+
+c <-  plot_ly(x = ~density$x, y = ~density$y, type = 'scatter', mode = 'lines', fill = 'tozeroy')
+  
+
+htmlwidgets::saveWidget(c,'plot3.html')
+```
+<style>
+  .f_iframe iframe {
+    width:100%;
+    height:576px;
+}
+</style>
+
+<div class="f_iframe">
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plot3.html"></iframe>
+</div>
+
+Density plot Age
+========================================================
+type: historias
+```{r, echo=FALSE}
+density <- density(Data$Age)
+
+c <-  plot_ly(x = ~density$x, y = ~density$y, type = 'scatter', mode = 'lines', fill = 'tozeroy')
+  
+
+htmlwidgets::saveWidget(c,'plot4.html')
+```
+<style>
+  .J_iframe iframe {
+    width:100%;
+    height:576px;
+}
+</style>
+
+<div class="J_iframe">
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plot4.html"></iframe>
+</div>
